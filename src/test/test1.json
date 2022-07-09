@@ -1,0 +1,43 @@
+{
+    //芯片对应的命令字
+    "flexChips" : [
+        {
+            "name" : "chip1",
+            "cmds" : ["cmd1", "cmd2"]
+        },
+        {
+            "name" : "chip2",
+            "cmds" : ["cmd3", "cmd4"]
+        }
+    ],
+    //构件对应的命令字
+    "componets" : [
+        {
+            "name" : "components1",
+            "cmds" : ["cmd1"]
+        },
+        {
+            "name" : "components2",
+            "cmds" : ["cmd2"]
+        },
+        {
+            "name" : "components3",
+            "cmds" : ["cmd3"]
+        },
+        {
+            "name" : "components4",
+            "cmds" : ["cmd4"]
+        }
+    ],
+    //控制总线对应的命令字
+    "controlBuses" : [
+        {
+            "name" : "online",
+            "cmds" : ["cmd1"]
+        },
+        {
+            "name" : "reset",
+            "cmds" : ["cmd2"]
+        }
+    ]
+}
