@@ -33,9 +33,6 @@ public class test {
         }
         return minRefuelStops;
     }
-
-
-    
 }
 
 
