@@ -1,40 +1,56 @@
 {
     "flexChips" : [
         {
-            "name" : "chip1",
-            "cmdList" : ["cmd1", "cmd2"]
+            "name" : "OpticalChip",
+            "cmdList" : ["cmd1"]
         },
         {
-            "name" : "chip2",
-            "cmdList" : ["cmd3", "cmd4"]
+            "name" : "LedChip",
+            "cmdList" : ["cmd3"]
+        },
+        {
+            "name" : "MacChip1",
+            "cmdList" : ["cmd5", "cmd7"]
+        },
+        {
+            "name" : "MacChip2",
+            "cmdList" : ["cmd9"]
+        },
+        {
+            "name" : "ControlChip",
+            "cmdList" : ["cmd2", "cmd4", "cmd6", "cmd8"]
         }
     ],
     "components" : [
         {
-            "name" : "components1",
-            "cmdList" : ["cmd1"]
+            "name" : "Optical",
+            "cmdList" : ["cmd1", "cmd2"]
         },
         {
-            "name" : "components2",
-            "cmdList" : ["cmd2"]
+            "name" : "Led",
+            "cmdList" : ["cmd3", "cmd4"]
         },
         {
-            "name" : "components3",
-            "cmdList" : ["cmd3"]
+            "name" : "Lmac",
+            "cmdList" : ["cmd5", "cmd6"]
         },
         {
-            "name" : "components4",
-            "cmdList" : ["cmd4"]
+            "name" : "Smac",
+            "cmdList" : ["cmd7", "cmd8"]
+        },
+        {
+            "name" : "Cmac",
+            "cmdList" : ["cmd9"]
         }
     ],
     "controlBuses" : [
         {
-            "name" : "online",
-            "cmdList" : ["cmd1"]
+            "name" : "Online",
+            "cmdList" : ["cmd2", "cmd5"]
         },
         {
-            "name" : "reset",
-            "cmdList" : ["cmd2"]
+            "name" : "Reset",
+            "cmdList" : ["cmd6", "cmd8"]
         }
     ]
 }

@@ -1,5 +1,7 @@
 package LeetCode_297;
 
+import java.util.Arrays;
+
 public class C {
     // //分成k份，每一份尽可能地均匀
     // //cookies地长度很小，可以考虑递归

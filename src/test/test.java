@@ -3,12 +3,11 @@ package test;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
+import java.util.Random;
 
 public class test {
     public static void main(String[] args) {
-        char ch = 0;
-        char ch1 = 0;
-        System.out.println(ch == ch1);
+        Random random = new Random();
     }
 
     public int minRefuelStops(int target, int startFuel, int[][] stations) {
