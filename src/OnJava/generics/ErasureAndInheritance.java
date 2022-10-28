@@ -14,7 +14,6 @@ public class ErasureAndInheritance {
         derived1.set(obj);
     }
 }
-
 class GenericBase<T> {
     private T element;
     public void set(T arg) {

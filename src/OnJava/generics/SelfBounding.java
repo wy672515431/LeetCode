@@ -26,5 +26,6 @@ class C extends SelfBounded<C> {
 class D {}
 /* cannot do that
 class E extends SelfBounded<D> {}
+
 */
 class F extends SelfBounded {}
