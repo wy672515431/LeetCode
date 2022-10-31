@@ -1,2 +1,4 @@
-package LeetCode_309;public class C {
+package LeetCode_309;
+
+public class C {
 }

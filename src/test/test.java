@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class test {
     public static void main(String[] args) {
-        Random random = new Random();
+
     }
 
     public int minRefuelStops(int target, int startFuel, int[][] stations) {
