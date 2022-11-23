@@ -12,6 +12,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+
+/**
+*@description: description
+*@author: wang yong
+*@date: 2022/11/5
+*/
 public class test {
     public static void main(String[] args) {
         // int[][] grid = {
@@ -25,8 +31,16 @@ public class test {
         //         {1,1,1,1,0,0,0,0}};
         // construct(grid, 1, grid.length, 1, grid.length);
         kthGrammar(3, 3);
+
+
     }
 
+
+    /**
+     * @param n
+     * @param k
+     * @return
+     */
     public static int kthGrammar(int n, int k) {
         //我们需要忽略第一位，本质上是求一个完全二叉树的节点
         if (n == 1) {
@@ -34,10 +48,10 @@ public class test {
         }
         int bits = 1 << (n - 2);
         int num = getNum(n, k);
-        int ans =  0;
+        int ans = 0;
         while (bits > 0) {
             if ((bits & num) > 0) {
-                ans ^= 1;  
+                ans ^= 1;
             } else {
                 //
             }
@@ -46,10 +60,23 @@ public class test {
         return ans;
     }
 
+    /**
+     * @param n
+     * @param k
+     * @return
+     */
     public static int getNum(int n, int k) {
-        return (int)Math.pow(2, n - 1) + k - 1;
+        return (int) Math.pow(2, n - 1) + k - 1;
     }
 
+    /**
+     * @param grid
+     * @param iStart
+     * @param iEnd
+     * @param jStart
+     * @param jEnd
+     * @return
+     */
     //我们不妨从A开始
     public static Node construct(int[][] grid, int iStart, int iEnd, int jStart, int jEnd) {
         if (iStart > iEnd || jStart > jEnd) {
