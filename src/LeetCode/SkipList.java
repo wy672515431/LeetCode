@@ -6,9 +6,10 @@ import java.util.Random;
 class Skiplist {
     static final int MAX_LEVEL = 32;
     static final double P_FACTOR = 0.25;
-    private SkiplistNode head;
+    private final SkiplistNode head;
+    // 当前的最高层级，当前实现为从1开始
     private int level;
-    private Random random;
+    private final Random random;
 
     public Skiplist() {
         this.head = new SkiplistNode(-1, MAX_LEVEL);
@@ -19,16 +20,17 @@ class Skiplist {
     public boolean search(int target) {
         SkiplistNode curr = this.head;
         for (int i = level - 1; i >= 0; i--) {
-            /* 找到第 i 层小于且最接近 target 的元素*/
+            /* 找到第 i 层小于且最接近 target 的元素， 即当前层级中最后一个小于target的node*/
             while (curr.forward[i] != null && curr.forward[i].val < target) {
                 curr = curr.forward[i];
             }
         }
+        // 已经到了最底层，已经是小于且最接近的target了。
         curr = curr.forward[0];
         /* 检测当前元素的值是否等于 target */
         if (curr != null && curr.val == target) {
             return true;
-        } 
+        }
         return false;
     }
 
@@ -41,6 +43,7 @@ class Skiplist {
             while (curr.forward[i] != null && curr.forward[i].val < num) {
                 curr = curr.forward[i];
             }
+            // 每一层小于且最接近num的节点
             update[i] = curr;
         }
         int lv = randomLevel();
@@ -48,6 +51,7 @@ class Skiplist {
         SkiplistNode newNode = new SkiplistNode(num, lv);
         for (int i = 0; i < lv; i++) {
             /* 对第 i 层的状态进行更新，将当前元素的 forward 指向新的节点 */
+            // 查到update和update.forward之间
             newNode.forward[i] = update[i].forward[i];
             update[i].forward[i] = newNode;
         }
@@ -95,9 +99,14 @@ class Skiplist {
 
 class SkiplistNode {
     int val;
-    //下一层索引,最多有maxLevel个索引
+    // 下一层索引,最多有maxLevel个索引
     SkiplistNode[] forward;
 
+    /**
+     *
+     * @param val the value
+     * @param maxLevel the level of the node
+     */
     public SkiplistNode(int val, int maxLevel) {
         this.val = val;
         this.forward = new SkiplistNode[maxLevel];

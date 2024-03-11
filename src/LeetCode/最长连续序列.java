@@ -2,36 +2,37 @@ package LeetCode;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class 最长连续序列 {
     //检查要合并的元素是否存在于数组中;
-    Set<Integer> set = new HashSet();
+    Set<Integer> set = new HashSet<>();
 
     class UnionFindSet {
         //记录当前节点的父节点
-        private HashMap<Integer, Integer> fatherMap;
+        private final HashMap<Integer, Integer> fatherMap;
         //记录当前集合的大小
-        private HashMap<Integer, Integer> sizeMap;
+        private final HashMap<Integer, Integer> sizeMap;
         //记录所有集合中最大的集合
         private int maxNums = 1;
 
         public UnionFindSet() {
-            fatherMap = new HashMap();
-            sizeMap = new HashMap();
+            fatherMap = new HashMap<>();
+            sizeMap = new HashMap<>();
         }
 
         public void init(int[] nums) {
-            for (int i = 0; i < nums.length; i++) {
+            for (int num : nums) {
                 //初始化时节点设为我自己
-                fatherMap.put(nums[i], nums[i]);
-                sizeMap.put(nums[i], 1);
+                fatherMap.put(num, num);
+                sizeMap.put(num, 1);
             }
         }
 
         public Integer findRepresentNode(Integer node) {
             Integer father = fatherMap.get(node);
-            if (father != node) {
+            if (!Objects.equals(father, node)) {
                 father = findRepresentNode(father);
             }
             //路径压缩

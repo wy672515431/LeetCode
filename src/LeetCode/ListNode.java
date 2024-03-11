@@ -1,14 +1,18 @@
 package LeetCode;
 
 public class ListNode {
-    int val;
-    ListNode next;
-    ListNode() {}
-    ListNode(int x) {
+    public int val;
+    public ListNode next;
+
+    public ListNode() {
+    }
+
+    public ListNode(int x) {
         val = x;
         next = null;
     }
-    ListNode(int x, ListNode next) {
+
+    public ListNode(int x, ListNode next) {
         val = x;
         this.next = next;
     }

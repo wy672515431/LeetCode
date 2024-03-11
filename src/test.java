@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -20,19 +21,7 @@ import java.util.List;
 */
 public class test {
     public static void main(String[] args) {
-        // int[][] grid = {
-        //         {1,1,1,1,0,0,0,0},
-        //         {1,1,1,1,0,0,0,0},
-        //         {1,1,1,1,1,1,1,1},
-        //         {1,1,1,1,1,1,1,1},
-        //         {1,1,1,1,0,0,0,0},
-        //         {1,1,1,1,0,0,0,0},
-        //         {1,1,1,1,0,0,0,0},
-        //         {1,1,1,1,0,0,0,0}};
-        // construct(grid, 1, grid.length, 1, grid.length);
-        kthGrammar(3, 3);
-
-
+        System.out.println(0.3*0.15*(0.9*0.75*0.10+0.9*0.25*0.15+0.1*0.75*0.65+0.1*0.25*0.80));
     }
 
 
@@ -153,6 +142,67 @@ class Node {
         this.bottomLeft = bottomLeft;
         this.bottomRight = bottomRight;
     }
+
+    Map<Character, List<Integer>> map = new HashMap<>();
+    public List<Boolean> canMakePaliQueries(String s, int[][] queries) {
+        List<Boolean> ans = new ArrayList<>();
+        char[] sequence = s.toCharArray();
+        int len = sequence.length;
+        for (char ch = 'a'; ch <= 'z'; ch++) {
+            map.put(ch, new ArrayList<>(){{add(0);}});
+        }
+        for (int i = 0; i < len; i++) {
+            char ch = sequence[i];
+            for (Map.Entry<Character, List<Integer>> entry : map.entrySet()) {
+                char key = entry.getKey();
+                List<Integer> countList = entry.getValue();
+                if (key == ch) {
+                    int cnt = countList.get(i) + 1;
+                    countList.add(cnt);
+                } else {
+                    int cnt = countList.get(i);
+                    countList.add(cnt);
+                }
+            }
+        }
+        for (int[] query : queries) {
+            int start = query[0];
+            int end = query[1];
+            int times = query[2];
+            int cnt = calc(start, end);
+            // if end - start + 1 is even, then the num of every ch must be even
+            // end - start + 1 is odd, we should allow one odd character
+            if ((end - start + 1) % 2 == 0) {
+                if (cnt % 2 != 0) {
+                    ans.add(false);
+                } else {
+                    if (cnt / 2 <= times) {
+                        ans.add(true);
+                    } else {
+                        ans.add(false);
+                    }
+                }
+            } else {
+                if (cnt % 2 == 0) {
+                    ans.add(false);
+                } else {
+                    if ((cnt - 1) / 2 <= times) {
+                        ans.add(true);
+                    } else {
+                        ans.add(false);
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+    public int calc(int start, int end) {
+        int cnt = 0;
+        for (List<Integer> countList : map.values()) {
+            cnt += countList.get(end + 1) - countList.get(start);
+        }
+        return cnt;
+     }
 }
 
 
