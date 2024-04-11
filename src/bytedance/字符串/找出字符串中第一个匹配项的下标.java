@@ -12,6 +12,7 @@ public class 找出字符串中第一个匹配项的下标 {
         for (int i = 1, j = 0; i < m; i++) {
             // 如果不相同
             while (j > 0 && needle.charAt(j) != needle.charAt(i)) {
+                // j没匹配上，能跳过多少字符呢？next[j - 1]
                 j = next[j - 1];
             }
             if (needle.charAt(j) == needle.charAt(i)) {

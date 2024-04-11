@@ -4,6 +4,10 @@ public class Sort {
     public static final int INF = 0x3f3f3f3f;
 
     private int partition(int[] arr, int p, int q) {
+        // 这里最坏情况下时间复杂度为O(n^2)
+        // 采用三数取中法可以降低最坏情况下的时间复杂度
+        // 三数取中法就是在选取pivot的时候，选取数组的第一个元素，中间元素，最后一个元素的中间值
+        // 选取 Math.max(Math.min(arr[p], arr[q]), Math.min(Math.max(arr[p], arr[q]), arr[(p + q) >> 1]))
         int pivot = arr[p];
         int i = p;
         int j = q;

@@ -2,6 +2,9 @@ package bytedance.tree;
 
 import LeetCode.TreeNode;
 
+/**
+ * 翻转一棵二叉树。
+ */
 public class 翻转二叉树 {
     public TreeNode invertTree(TreeNode root) {
         solve(root);
@@ -17,16 +20,5 @@ public class 翻转二叉树 {
         TreeNode temp = root.left;
         root.left = root.right;
         root.right = temp;
-    }
-
-    public TreeNode invertTree1(TreeNode root) {
-        if (root == null) {
-            return null;
-        }
-        TreeNode left = invertTree1(root.left);
-        TreeNode right = invertTree1(root.right);
-        root.left = right;
-        root.right = left;
-        return root;
     }
 }

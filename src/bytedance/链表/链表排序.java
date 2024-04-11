@@ -46,6 +46,8 @@ public class 链表排序 {
             }
             cur = cur.next;
         }
+
+        // 简化 cur.next = tem1 != null ? tem1 : tem2;
         while (tem1 != null) {
             cur.next = tem1;
             tem1 = tem1.next;

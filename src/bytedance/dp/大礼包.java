@@ -72,6 +72,14 @@ public class 大礼包 {
 //    }
     // 记忆化搜索, 将状态建模为List, 用List<Integer>来表示一个状态
     Map<List<Integer>, Integer> memo = new HashMap<>();
+
+    /**
+     * 求满足需求，所花的最小价格
+     * @param price 每类商品单独购买所需的价格
+     * @param special 礼包
+     * @param needs 对每类商品的需求
+     * @return
+     */
     public int shoppingOffers(List<Integer> price, List<List<Integer>> special, List<Integer> needs) {
         // 首先过滤掉没用的礼包
         int n = price.size();
@@ -100,6 +108,7 @@ public class 大礼包 {
             }
             for (List<Integer> special: filterSpecial) {
                 int specialPrice = special.getLast();
+                // 下一个阶段的需求状态
                 List<Integer> nextNeeds = new ArrayList<>();
                 for (int i = 0; i < n; i++) {
                     // 超出了需求

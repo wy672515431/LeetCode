@@ -19,6 +19,8 @@ public class 合并两个有序列表 {
             curNode = curNode.next;
         }
 
+
+        // 简化 curNode.next = (tem1 != null) ? tem1 : tem2;
         while (tem1 != null) {
             curNode.next = tem1;
             tem1 = tem1.next;

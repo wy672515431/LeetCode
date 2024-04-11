@@ -3,6 +3,11 @@ package bytedance.dp;
 import java.util.Stack;
 
 public class 最长有效括号 {
+    /**
+     * 统计s中最长有效括号的长度
+     * @param s
+     * @return
+     */
     public int longestValidParentheses(String s) {
         int len = s.length();
         // 以i结尾的子串长度

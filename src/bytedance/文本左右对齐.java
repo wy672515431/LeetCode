@@ -26,7 +26,6 @@ public class 文本左右对齐 {
                 solve(words, start, end - 1, maxWidth);
                 width = 0;
                 start = end;
-                continue;
             } else {
                 width += 1;
                 end += 1;

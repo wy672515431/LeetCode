@@ -8,6 +8,12 @@ public class 分割回文串 {
     boolean[][] dp;
     List<List<String>> ans = new ArrayList<>();
     List<String> palindromes = new ArrayList<>();
+
+    /**
+     * 分割回文串, 将s分割成多个回文串
+     * @param s
+     * @return
+     */
     public List<List<String>> partition(String s) {
         len = s.length();
         dp = new boolean[len][len];

@@ -6,6 +6,8 @@ public class 字符串相乘 {
         StringBuilder right = new StringBuilder();
         int len1 = num1.length(), len2 = num2.length();
         for (int i = len1 - 1; i >= 0; i--) {
+            // 做乘法，num1从低位到高位，分别乘以每一位
+            // 随着i的递减，要在乘积后面添加后缀0
             right.setLength(0);
             char ch1 = num1.charAt(i);
             int carry = 0;
@@ -17,11 +19,13 @@ public class 字符串相乘 {
                 carry = mult / 10;
                 j--;
             }
+            // 注意，前面做完运算后，低位在前
             right.reverse();
             // 在后面添加后缀0
             right.repeat("0", len1 - i - 1);
             left = add(left, right);
         }
+        // 去掉前导0
         if (left.charAt(0) == '0') {
             left.setLength(1);
         }
@@ -41,6 +45,7 @@ public class 字符串相乘 {
             i--;
             j--;
         }
+        // 这样做的话也是低位在前
         return res.reverse();
     }
 }

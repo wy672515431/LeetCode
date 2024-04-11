@@ -20,9 +20,11 @@ public class 最小覆盖子串 {
             }
             // 满足要求
             while (check() && l <= r) {
-                ans = Math.min(ans, r - l + 1);
-                sl = l;
-                sr = r;
+                if (ans > r - l + 1) {
+                    ans = r - l + 1;
+                    sl = l;
+                    sr = r;
+                }
                 char ch = s.charAt(l);
                 if (sMap.containsKey(ch)) {
                     sMap.put(ch, sMap.get(ch) - 1);

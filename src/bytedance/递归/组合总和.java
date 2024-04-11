@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 同一个数字可以无限次数取
+ */
 public class 组合总和 {
     List<List<Integer>> ans = new ArrayList<>();
     List<Integer> combs = new ArrayList<>();
@@ -31,6 +34,7 @@ public class 组合总和 {
                 sum -= candidates[i];
                 break;
             } else {
+                // 同一个数可以无限次数取
                 solve(candidates, target, i);
                 combs.removeLast();
                 sum -= candidates[i];

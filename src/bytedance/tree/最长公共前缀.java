@@ -4,6 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class 最长公共前缀 {
+    /**
+     * 字典树
+     * @param strs
+     * @return
+     */
     public String longestCommonPrefix(String[] strs) {
         Trie trie = new Trie();
         for (String str : strs) {
@@ -21,6 +26,9 @@ public class 最长公共前缀 {
         return sb.toString();
     }
 
+    /**
+     * 字典树节点
+     */
     class TrieNode {
         Map<Character, TrieNode> son;
         boolean isEnd;
@@ -29,6 +37,9 @@ public class 最长公共前缀 {
         }
     }
 
+    /**
+     * 字典树
+     */
     class Trie {
         TrieNode root;
         Trie() {

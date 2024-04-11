@@ -15,13 +15,17 @@ public class 搜索旋转数组 {
             }
             // 在同一段升序上
             if (nums[low] < nums[mid]) {
+                // 在[LOW, MID]递增区间
                 if (nums[low] <= target && nums[mid] > target) {
                     high = mid - 1;
                 } else {
+                    // 不再
                     low = mid + 1;
                 }
             } else if (nums[low] > nums[mid]) {
+                // 不再同一个区间里
                 // nums[low] > nums[mid]
+                // 再[mid, high]递增区间
                 if (nums[mid] < target && nums[high] >= target) {
                     low = mid + 1;
                 } else {

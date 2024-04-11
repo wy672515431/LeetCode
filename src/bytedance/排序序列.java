@@ -23,6 +23,7 @@ public class 排序序列 {
         }
         Set<Integer> visit = new HashSet<>();
         for (int i = n - 1; i >= 0; i--) {
+            // 每一位的数字
             int digit = (k - 1) / factorial[i] + 1;
             int count = 0;
             for (int j = 1; j <= 9; j++) {
@@ -36,6 +37,7 @@ public class 排序序列 {
                     break;
                 }
             }
+            // k 1 ~ n! -> 1 ~ (n - 1)!
             k = k - (digit - 1) * factorial[i];
         }
         return sb.toString();

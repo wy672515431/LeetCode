@@ -30,6 +30,7 @@ public class 编辑距离 {
                 if (ch1 == ch2) {
                     dp[i + 1][j + 1] = dp[i][j];
                 } else {
+                    // 插入、删除、替换 dp[i][j] 替换， dp[i][j + 1]代表插入，dp[i + 1][j]代表删除
                     dp[i + 1][j + 1] = Math.min(
                             dp[i][j], Math.min(dp[i][j + 1], dp[i + 1][j])
                     ) + 1;

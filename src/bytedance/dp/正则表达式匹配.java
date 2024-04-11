@@ -1,6 +1,12 @@
 package bytedance.dp;
 
 public class 正则表达式匹配 {
+    /**
+     * 判断s是否能够匹配p
+     * @param s
+     * @param p p类似于正则表达式
+     * @return
+     */
     public boolean isMatch(String s, String p) {
         int slen = s.length();
         int plen = p.length();
@@ -22,7 +28,7 @@ public class 正则表达式匹配 {
                     assert (j >= 1);
                     // 要向前看一个字符
                     char preCh = p.charAt(j - 1);
-                    if (preCh == '.' || preCh == s.charAt(i)) {
+                    if (preCh == '.' || preCh == ch1) {
                         // 匹配s当前的字符，该组合继续匹配
                         dp[i + 1][j + 1] = dp[i][j + 1];
                     }

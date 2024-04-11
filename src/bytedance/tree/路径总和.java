@@ -5,6 +5,13 @@ import LeetCode.TreeNode;
 public class 路径总和 {
     int sum = 0;
     boolean ans = false;
+
+    /**
+     * 是否存在和为targetSum的路径
+     * @param root
+     * @param targetSum
+     * @return
+     */
     public boolean hasPathSum(TreeNode root, int targetSum) {
         solve(root, targetSum);
         return ans;

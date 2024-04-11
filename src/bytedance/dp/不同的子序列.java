@@ -2,6 +2,13 @@ package bytedance.dp;
 
 public class 不同的子序列 {
     private static final int MOD = (int)1e9 + 7;
+
+    /**
+     * 在s中找到t的不同子序列的个数
+     * @param s
+     * @param t
+     * @return
+     */
     public int numDistinct(String s, String t) {
         int slen = s.length();
         int tlen = t.length();

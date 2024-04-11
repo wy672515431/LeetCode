@@ -1,6 +1,7 @@
 package myTest;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -11,8 +12,13 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.stream.Stream;
 
 public class Base {
+    static class Person {
+        int age;
+        Person(int age) {
+            this.age = age;
+        }
+    }
     public static void main(String[] args) throws InterruptedException {
-
     }
 
     public String customSortString(String order, String s) {
