@@ -1,5 +1,6 @@
 package bytedance.random;
 
+import java.util.Collections;
 import java.util.Random;
 
 public class Shuffle {
@@ -20,7 +21,7 @@ public class Shuffle {
 
     public static void shuffle(int[] nums) {
         Random random = new Random();
-        // 第二个数没有被交换的概率 n - 1 / n * (1 / n - 1)  = 1 / n
+        // 第二个数没有被交换的概率 (n - 1) / n * (1 / n - 1)  = 1 / n
         // 依次类推
         for (int i = 0; i < nums.length; i++) {
             // 从[i, n)中随机选取一个数

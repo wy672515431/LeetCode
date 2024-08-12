@@ -19,8 +19,13 @@ public class 跳跃游戏II {
     }
 
     public int optimizedJump(int[] nums) {
+        // 我们从必须从0开始起跳，end = 0；
+        // 下一次我们可以从[0 ~ 0 + nums[0]]中任意地方起跳
         int end = 0;
+        // 当前一跳最远能到的地方，比如在0的时候，最远能够跳到[0 ~ 0 + nums[0]]的地方
+        // 在上述区间的地方，都能通过一跳达到
         int maxPos = 0;
+        // 跳的最小步数
         int ans = 0;
         for (int i = 0; i < nums.length - 1; i++) {
             // 代表从该跳点能跳到最远的地方

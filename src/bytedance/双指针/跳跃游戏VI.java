@@ -5,7 +5,7 @@ import java.util.Deque;
 
 public class 跳跃游戏VI {
     /**
-     * 每一个格子有积分，每一次最多可以条k步，求最多的积分
+     * 每一个格子有积分，每一次最多可以跳k步，求最多的积分
      * @param nums
      * @param k
      * @return
@@ -23,8 +23,8 @@ public class 跳跃游戏VI {
                 deque.pollFirst();
             }
             dp[i] = dp[deque.peekFirst()] + nums[i];
-            // 对于下标i,j，如果i < j 且 dp[i] < dp[j], 则没用
-            // 因为他们对后面的作用，都没有dp[i]大
+            // 如果dp[i] > dp[deque.peekLast()]，那么deque.peekLast()就没有存在的必要了
+            // 因为dp[i]显然对后面的影响更大.
             while (!deque.isEmpty() && dp[deque.peekLast()] < dp[i]) {
                 deque.pollLast();
             }

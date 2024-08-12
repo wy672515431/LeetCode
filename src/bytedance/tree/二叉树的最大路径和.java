@@ -13,7 +13,7 @@ public class 二叉树的最大路径和 {
         if (root == null) {
             return 0;
         }
-        // 左子树的最大值，小于0没有任何意义
+        // 左子树的最大值，小于0对我求最大路径和没有意义
         int left = Math.max(0, solve(root.left));
         // 右子树的最大值
         int right = Math.max(0, solve(root.right));

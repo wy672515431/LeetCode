@@ -12,9 +12,9 @@ public class 乘积最大子数组 {
             // 如果nums是正数
             if (nums[i] > 0) {
                 dp[i][0] = Math.max(dp[i - 1][0] * nums[i], dp[i][0]);
-                dp[i][1] = Math.min(dp[i - 1][1] * nums[i], dp[i][0]);
+                dp[i][1] = Math.min(dp[i - 1][1] * nums[i], dp[i][1]);
             } else {
-                dp[i][1] = Math.min(dp[i - 1][0] * nums[i], dp[i][0]);
+                dp[i][1] = Math.min(dp[i - 1][0] * nums[i], dp[i][1]);
                 dp[i][0] = Math.max(dp[i - 1][1] * nums[i], dp[i][0]);
             }
         }

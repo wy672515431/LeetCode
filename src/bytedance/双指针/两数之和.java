@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class 两数之和 {
     public int[] twoSum(int[] nums, int target) {
-        // 时间复杂度(O(lgn))
+        // 时间复杂度(O(nlogn))
         Node[] nodes = new Node[nums.length];
         for (int i = 0; i < nums.length - 1; i++) {
             nodes[i] = new Node(nums[i], i);

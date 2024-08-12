@@ -145,7 +145,9 @@ public class 缓存 {
 
         private int capacity;
         private int minFreq;
+        // 存储频率对应的列表
         private Map<Integer, DLinkedList> innerCache;
+        // 存储key对应的Node
         private Map<Integer, DLinkedNode> keyMap;
 
         public LFUCache(int capacity) {

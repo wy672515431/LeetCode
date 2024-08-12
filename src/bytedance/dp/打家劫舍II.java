@@ -8,12 +8,14 @@ public class 打家劫舍II {
             return nums[0];
         }
         int n = nums.length;
+        // 偷第一间房 ans1代表偷当前房的最大值 ans2代表不偷当前房的最大值
         int ans1 = nums[0], ans2 = 0;
         for (int i = 1; i < n - 1; i++) {
             int temp = ans1;
             ans1 = Math.max(ans1, ans2 + nums[i]);
             ans2 = Math.max(temp, ans2);
         }
+        // 偷最后一间房 ans3代表偷当前房的最大值 ans4代表不偷当前房的最大值
         int ans3 = nums[1], ans4 = 0;
         for (int i = 2; i < n; i++) {
             int temp = ans3;

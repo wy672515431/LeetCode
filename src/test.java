@@ -1,29 +1,72 @@
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
 
 
 /**
-*@description: description
-*@author: wang yong
-*@date: 2022/11/5
-*/
+ * @description: description
+ * @author: wang yong
+ * @date: 2022/11/5
+ */
 public class test {
+    private static int ans = 0;
+    private static final int MAX = 1 << 20;
+    private static int solve(int[] tree, int index) {
+        if (index >= tree.length || tree[index] == Integer.MAX_VALUE) {
+            return 0;
+        }
+        int left = 2 * index + 1;
+        int right = 2 * index + 2;
+        int leftVal = solve(tree, left);
+        int rightVal = solve(tree, right);
+        int left1 = 0;
+        int right1 = 0;
+        if (left < tree.length && tree[left] != Integer.MAX_VALUE && tree[left] == tree[index]) {
+            left1 = leftVal + 1;
+        }
+        if (right < tree.length && tree[right] != Integer.MAX_VALUE && tree[right] == tree[index]) {
+            right1 = rightVal + 1;
+        }
+        ans = Math.max(ans, left1 + right1);
+        return Math.max(left1, right1);
+    }
     public static void main(String[] args) {
-        System.out.println(0.3*0.15*(0.9*0.75*0.10+0.9*0.25*0.15+0.1*0.75*0.65+0.1*0.25*0.80));
+        System.out.println(fun());
     }
 
+    private static int fun() {
+        int a = 1;
+        try {
+            throw new RuntimeException();
+        } catch (RuntimeException e) {
+            System.exit(-1);
+        } finally {
+            // 覆盖了栈中的值
+            a = 2;
+            return a;
+        }
+    }
+
+    private static final int MOD = (int)1e9 + 7;
+    private static long fastPow(long a, long b) {
+        long res = 1;
+        while (b > 0) {
+            if ((b & 1) == 1) {
+                res = res * a % MOD;
+            }
+            a = a * a % MOD;
+            b >>= 1;
+        }
+        return res;
+    }
 
     /**
      * @param n
@@ -144,12 +187,15 @@ class Node {
     }
 
     Map<Character, List<Integer>> map = new HashMap<>();
+
     public List<Boolean> canMakePaliQueries(String s, int[][] queries) {
         List<Boolean> ans = new ArrayList<>();
         char[] sequence = s.toCharArray();
         int len = sequence.length;
         for (char ch = 'a'; ch <= 'z'; ch++) {
-            map.put(ch, new ArrayList<>(){{add(0);}});
+            map.put(ch, new ArrayList<>() {{
+                add(0);
+            }});
         }
         for (int i = 0; i < len; i++) {
             char ch = sequence[i];
@@ -196,13 +242,14 @@ class Node {
         }
         return ans;
     }
+
     public int calc(int start, int end) {
         int cnt = 0;
         for (List<Integer> countList : map.values()) {
             cnt += countList.get(end + 1) - countList.get(start);
         }
         return cnt;
-     }
+    }
 }
 
 

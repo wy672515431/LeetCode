@@ -20,12 +20,12 @@ public class 螺旋矩阵 {
             for (int i = top + 1; i <= bottom; i++) {
                 ans.add(matrix[i][right]);
             }
-            // 从右到左
-            // 从下到上，可能出现left == right 和 top == bottom的情况, 这时候如果在进行下面的操作，会出现重复的情况
             if (left < right && top < bottom) {
+                // 从右到左, 如果bottom == top，会与上面的从右到左重复
                 for (int i = right - 1; i >= left; i--) {
                     ans.add(matrix[bottom][i]);
                 }
+                // 从下到上, 如果left == right，会与上面的从上到下重复
                 for (int i = bottom - 1; i >= top + 1; i--) {
                     ans.add(matrix[i][left]);
                 }

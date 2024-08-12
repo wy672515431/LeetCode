@@ -1,0 +1,11 @@
+-- 找到成绩最高的列
+Select student_id, max(grade) from Enrollments group by student_id;
+
+-- 找到成绩最高中course_id最小的列
+Select student_id, min(course_id) as 'course_id', grade from Enrollments
+
+--
+Select student_id, min(course_id) as 'course_id', grade from Enrollments
+where (student_id, grade) in (Select student_id, max(grade) from Enrollments group by student_id)
+group by student_id, grade
+order by student_id;

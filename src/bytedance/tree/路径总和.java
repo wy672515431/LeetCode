@@ -3,40 +3,13 @@ package bytedance.tree;
 import LeetCode.TreeNode;
 
 public class 路径总和 {
-    int sum = 0;
-    boolean ans = false;
-
     /**
-     * 是否存在和为targetSum的路径
+     * 减去根节点的值，然后递归左右子树，到叶子节点时，判断sum是否等于叶子节点的值
+     * 如果是，则代表存在
      * @param root
-     * @param targetSum
+     * @param sum
      * @return
      */
-    public boolean hasPathSum(TreeNode root, int targetSum) {
-        solve(root, targetSum);
-        return ans;
-    }
-
-    private void solve(TreeNode node, int targetSum) {
-        if (ans || node == null) {
-            return;
-        }
-        sum += node.val;
-        // 叶子节点
-        if (node.left == null && node.right == null) {
-            if (sum == targetSum) {
-                ans = true;
-            }
-        }
-        if (node.left != null) {
-            solve(node.left, targetSum);
-        }
-        if (node.right != null) {
-            solve(node.right, targetSum);
-        }
-        sum -= node.val;
-    }
-
     public boolean betterHasPathSum(TreeNode root, int sum) {
         if (root == null) {
             return false;

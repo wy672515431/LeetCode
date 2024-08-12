@@ -4,6 +4,7 @@ import LeetCode.TreeNode;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 import java.util.Queue;
 
@@ -18,27 +19,23 @@ public class 二叉树的锯齿形层序遍历 {
         queue.offer(root);
         while (!queue.isEmpty()) {
             leftToRight = !leftToRight;
-            ArrayDeque<Integer> deque = new ArrayDeque<>();
             int size = queue.size();
+            Deque<Integer> level = new ArrayDeque<>();
             for (int i = 0; i < size; i++) {
-                TreeNode node = queue.poll();
-                if (node.left != null) {
-                    queue.offer(node.left);
-                }
-                if (node.right != null) {
-                    queue.offer(node.right);
-                }
-                deque.add(node.val);
-            }
-            List<Integer> list = new ArrayList<>();
-            while (!deque.isEmpty()) {
+                TreeNode cur = queue.poll();
                 if (leftToRight) {
-                    list.add(deque.pollFirst());
+                    level.offerLast(cur.val);
                 } else {
-                    list.add(deque.pollLast());
+                    level.offerFirst(cur.val);
+                }
+                if (cur.left != null) {
+                    queue.offer(cur.left);
+                }
+                if (cur.right != null) {
+                    queue.offer(cur.right);
                 }
             }
-            ans.add(list);
+            ans.add(new ArrayList<>(level));
         }
         return ans;
     }

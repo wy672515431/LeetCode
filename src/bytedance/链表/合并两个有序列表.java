@@ -4,35 +4,19 @@ import LeetCode.ListNode;
 
 public class 合并两个有序列表 {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode tem1 = list1;
-        ListNode tem2 = list2;
-        ListNode dummy = new ListNode();
-        ListNode curNode = dummy;
-        while (tem1 != null && tem2 != null) {
-            if (tem1.val <= tem2.val) {
-                curNode.next = tem1;
-                tem1 = tem1.next;
+        ListNode dummy = new ListNode(-1);
+        ListNode head = dummy;
+        while (list1 != null && list2 != null) {
+            if (list1.val < list2.val) {
+                head.next = list1;
+                list1 = list1.next;
             } else {
-                curNode.next = tem2;
-                tem2 = tem2.next;
+                head.next = list2;
+                list2 = list2.next;
             }
-            curNode = curNode.next;
+            head = head.next;
         }
-
-
-        // 简化 curNode.next = (tem1 != null) ? tem1 : tem2;
-        while (tem1 != null) {
-            curNode.next = tem1;
-            tem1 = tem1.next;
-            curNode = curNode.next;
-        }
-
-        while (tem2 != null) {
-            curNode.next = tem2;
-            tem2 = tem2.next;
-            curNode = curNode.next;
-        }
-
+        head.next = list1 == null ? list2 : list1;
         return dummy.next;
     }
 }
