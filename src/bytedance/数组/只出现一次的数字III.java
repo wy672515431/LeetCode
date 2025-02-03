@@ -22,8 +22,4 @@ public class 只出现一次的数字III {
         ans[1] = b;
         return ans;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

@@ -11,9 +11,12 @@ public class 单词搜索 {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 solve(board, word, i, j, 0);
+                if (ans) {
+                    return true;
+                }
             }
         }
-        return ans;
+        return false;
     }
 
     private void solve(char[][] borad, String word, int x, int y, int cur) {

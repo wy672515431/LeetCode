@@ -1,7 +1,5 @@
 package bytedance.双指针;
 
-import java.util.Stack;
-
 public class 盛最多水的容器 {
     public int maxArea(int[] height) {
         // 固定高度，找到宽度

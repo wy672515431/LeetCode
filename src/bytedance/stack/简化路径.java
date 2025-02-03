@@ -2,7 +2,6 @@ package bytedance.stack;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Stack;
 
 public class 简化路径 {
     public String simplifyPath(String path) {

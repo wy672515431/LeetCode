@@ -1,7 +1,6 @@
 package bytedance.random;
 
 import LeetCode.ListNode;
-import OnJava.Rand;
 
 import java.util.Random;
 

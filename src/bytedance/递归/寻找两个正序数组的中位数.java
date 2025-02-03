@@ -11,6 +11,7 @@ public class 寻找两个正序数组的中位数 {
         int n = nums1.length;
         int m = nums2.length;
 
+        // 比下标大1
         int left = (n + m + 1) / 2;
         int right = (n + m + 2) / 2;
 
@@ -21,8 +22,8 @@ public class 寻找两个正序数组的中位数 {
     }
 
     public int solve(int[] nums1, int start1, int end1, int[] nums2, int start2, int end2, int k) {
-        // 每次取 k，比较 nums1[k / 2]和nums2[k / 2]的大小，较小的一方，[start1, start1 + k / 2 - 1]可以省去
-        // 当start == end时，第k大数必为 nums2[start2 + k - 1];
+        // 比较 nums1[start1 + k / 2 - 1]和nums2[start2 + k / 2 - 1]的大小, 第k大肯定不在较小的那个数的左边
+        // 当start == end时，第k小数必为 nums2[start2 + k - 1];
         int len1 = end1 - start1 + 1;
         int len2 = end2 - start2 + 1;
         if (len1 == 0) {
@@ -37,7 +38,7 @@ public class 寻找两个正序数组的中位数 {
             return Math.min(nums1[start1], nums2[start2]);
         }
 
-        // 这里有坑，注意 k / 2可能超过len1的长度
+        // 这里有坑，注意 k / 2可能超过len1的长度, 可能会导致数组越界
         int newStart1 = start1 + Math.min(len1, k / 2) - 1;
         int newStart2 = start2 + Math.min(len2, k / 2) - 1;
         if (nums1[newStart1] < nums2[newStart2]) {

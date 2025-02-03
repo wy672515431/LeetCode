@@ -9,6 +9,7 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.function.Consumer;
 
 
 /**
@@ -39,7 +40,16 @@ public class test {
         return Math.max(left1, right1);
     }
     public static void main(String[] args) {
-        System.out.println(fun());
+    }
+
+    private static boolean checkPalindrome(String s) {
+        int len = s.length();
+        for (int i = 0; i < len / 2; i++) {
+            if (s.charAt(i) != s.charAt(len - i - 1)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static int fun() {

@@ -1,7 +1,5 @@
 package bytedance.背包问题;
 
-import java.util.Arrays;
-
 public class 目标和 {
     // 找出和为 (sum + target) / 2的方法数
     // (sum - target) / 2

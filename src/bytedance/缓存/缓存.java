@@ -1,7 +1,5 @@
 package bytedance.缓存;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 

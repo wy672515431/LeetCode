@@ -1,7 +1,5 @@
 package data_structure;
 
-import java.util.HashMap;
-
 class FrontMiddleBackQueue {
     // 伪节点
     Node dummyNode;

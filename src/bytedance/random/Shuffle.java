@@ -1,6 +1,5 @@
 package bytedance.random;
 
-import java.util.Collections;
 import java.util.Random;
 
 public class Shuffle {

@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class 子数组最大平均值 {
     private static final double eps = 1e-6;
+
     public double findMaxAverage(int[] nums, int k) {
         double low = Arrays.stream(nums).min().orElseThrow();
         double high = Arrays.stream(nums).max().orElseThrow();

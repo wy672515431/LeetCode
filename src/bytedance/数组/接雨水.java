@@ -1,8 +1,5 @@
 package bytedance.数组;
 
-import java.util.Arrays;
-import java.util.Stack;
-
 public class 接雨水 {
     // 对于每一个位置，本质上是要找到左右两侧，最高于其高度的位置
     public static int trap(int[] height) {
@@ -22,6 +19,27 @@ public class 接雨水 {
                 rightMax = height[i];
             }
             ans += Math.min(left[i], rightMax) - height[i];
+        }
+        return ans;
+    }
+
+    public static int spaceOptimizedTrap(int[] height) {
+        // 对于每个位置，本质上是要找到左右两侧，最高于其高度的位置
+        int n = height.length;
+        int left = 0, right = n - 1;
+        int leftMax = 0, rightMax = 0;
+        int ans = 0;
+        while (left < right) {
+            leftMax = Math.max(leftMax, height[left]);
+            rightMax = Math.max(rightMax, height[right]);
+            // height[left] < height[right], 此时leftMax < rightMax，一定由leftMax决定
+            if (height[left] < height[right]) {
+                ans += leftMax - height[left];
+                left++;
+            } else {
+                ans += rightMax - height[right];
+                right--;
+            }
         }
         return ans;
     }

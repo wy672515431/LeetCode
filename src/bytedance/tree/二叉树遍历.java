@@ -61,5 +61,6 @@ public class 二叉树遍历 {
                 root = root.right;
             }
         }
+        return res;
     }
 }

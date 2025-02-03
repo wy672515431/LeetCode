@@ -33,31 +33,18 @@ public class 链表排序 {
             return head1;
         }
         ListNode dummy = new ListNode();
-        ListNode cur = dummy, tem1 = head1, tem2 = head2;
-        dummy.next = cur;
-        while (tem1 != null && tem2 != null) {
-            int val1 = tem1.val, val2 = tem2.val;
-            if (val1 < val2) {
-                cur.next = tem1;
-                tem1 = tem1.next;
+        ListNode cur = dummy;
+        while (head1 != null && head2 != null) {
+            if (head1.val < head2.val) {
+                cur.next = head1;
+                head1 = head1.next;
             } else {
-                cur.next = tem2;
-                tem2 = tem2.next;
+                cur.next = head2;
+                head2 = head2.next;
             }
             cur = cur.next;
         }
-
-        // 简化 cur.next = tem1 != null ? tem1 : tem2;
-        while (tem1 != null) {
-            cur.next = tem1;
-            tem1 = tem1.next;
-            cur = cur.next;
-        }
-        while (tem2 != null) {
-            cur.next = tem2;
-            tem2 = tem2.next;
-            cur = cur.next;
-        }
+        cur.next = head1 == null ? head2 : head1;
         return dummy.next;
     }
 
@@ -102,6 +89,7 @@ public class 链表排序 {
                 while (prevNode.next != null) {
                     prevNode = prevNode.next;
                 }
+                // 下一个合并的链表头节点
                 curNode = next;
             }
         }

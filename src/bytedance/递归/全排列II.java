@@ -2,11 +2,7 @@ package bytedance.递归;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Hashtable;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class 全排列II {
     List<List<Integer>> ans = new ArrayList<>();
@@ -27,18 +23,18 @@ public class 全排列II {
             return;
         }
         for (int i = 0; i < n; i++) {
-            // nums[i]没访问过，且去重，但是当nums[i - 1]被访问过则不用考虑去重
-            if (!isVisited[i] && (i == 0 || (nums[i] != nums[i - 1]) || isVisited[i - 1])) {
-                isVisited[i] = true;
-                permutation.add(nums[i]);
-                solve(nums);
-                isVisited[i] = false;
-                permutation.removeLast();
+            // 1.当前数字被访问过
+            // 2.当前数字和前一个数字相同，且前一个数字没有被访问过
+            // 当前一个数字相同的时候，只有先访问前面的数字，才能访问后面的数字
+            // 这样可以避免重复
+            if (isVisited[i] || (i > 0 && nums[i] == nums[i - 1] && !isVisited[i - 1])) {
+                continue;
             }
+            isVisited[i] = true;
+            permutation.add(nums[i]);
+            solve(nums);
+            isVisited[i] = false;
+            permutation.removeLast();
         }
-    }
-
-    public static void main(String[] args) {
-
     }
 }

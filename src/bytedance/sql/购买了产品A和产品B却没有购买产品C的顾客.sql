@@ -1,4 +1,5 @@
 -- 集合的三个操作: union, intersect, except
+-- union all: 不去重
 Select Customers.customer_id, customer_name from Customers
     where customer_id in (
            select customer_id from Orders where product_name = 'A'

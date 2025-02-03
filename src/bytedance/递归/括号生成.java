@@ -4,19 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class 括号生成 {
-    // 在每一个位置，左括号的数量必须多余右括号的数量
-    static StringBuilder sb = new StringBuilder();
-    static List<String> ans = new ArrayList<>();
-    public static List<String> generateParenthesis(int n) {
+    // 在每一个位置，左括号的数量必须大于等于右括号的数量
+    StringBuilder sb = new StringBuilder();
+    List<String> ans = new ArrayList<>();
+    public List<String> generateParenthesis(int n) {
         solve(0, 0, n);
         return ans;
     }
 
-    public static void main(String[] args) {
-        System.out.println(generateParenthesis(3));
-    }
-
-    private static void solve(int lParen, int rParen, int n) {
+    private void solve(int lParen, int rParen, int n) {
         if (lParen > n) {
             return;
         }

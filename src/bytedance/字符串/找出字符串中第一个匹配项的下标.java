@@ -1,6 +1,11 @@
 package bytedance.字符串;
 
 public class 找出字符串中第一个匹配项的下标 {
+    public static void main(String[] args) {
+        找出字符串中第一个匹配项的下标 main = new 找出字符串中第一个匹配项的下标();
+        System.out.println(main.strStr("bccabcaac", "bccabcaac"));
+    }
+
     public int strStr(String haystack, String needle) {
         // kmp算法
         // next数组: next[i]代表如果needle中第i个字符匹配失败了，重新匹配时，可以在needle中跳过多少个字符
@@ -19,6 +24,10 @@ public class 找出字符串中第一个匹配项的下标 {
                 j++;
             }
             next[i] = j;
+        }
+
+        for (int i = 0; i < m; i++) {
+            System.out.println(next[i]);
         }
 
 

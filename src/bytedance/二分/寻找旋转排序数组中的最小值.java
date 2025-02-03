@@ -32,6 +32,7 @@ public class 寻找旋转排序数组中的最小值 {
         int mid;
         while (low < high) {
             mid = low + (high - low) / 2;
+            // 最小值在mid的右侧
             if (nums[mid] > nums[high]) {
                 low = mid + 1;
             } else {

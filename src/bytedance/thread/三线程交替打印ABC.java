@@ -41,7 +41,6 @@ public class 三线程交替打印ABC {
                     semaphoreB.release();
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
-                    ;
                     return;
                 }
             }

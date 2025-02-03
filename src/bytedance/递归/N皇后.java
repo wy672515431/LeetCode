@@ -7,6 +7,7 @@ public class N皇后 {
     boolean[][] isVisited;
     int[] column;
     List<List<String>> ans = new ArrayList<>();
+    int count = 0;
     public List<List<String>> solveNQueens(int n) {
         // isVisited[0][i] 代表i列是否存在皇后
         // isVisited[1][i + cur] 代表左下到右上的斜边
@@ -37,8 +38,10 @@ public class N皇后 {
                 temp.add(sb.toString());
             }
             ans.add(temp);
+            count++;
             return;
         }
+        // i - column
         for (int i = 0; i < n; i++) {
             // 列、左下到右上斜线、左上到右下斜线
             if (isVisited[0][i] || isVisited[1][i + cur] || isVisited[2][i - cur + n]) {

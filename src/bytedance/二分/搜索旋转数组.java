@@ -19,13 +19,13 @@ public class 搜索旋转数组 {
                 if (nums[low] <= target && nums[mid] > target) {
                     high = mid - 1;
                 } else {
-                    // 不再
+                    // 不在
                     low = mid + 1;
                 }
             } else if (nums[low] > nums[mid]) {
                 // 不再同一个区间里
                 // nums[low] > nums[mid]
-                // 再[mid, high]递增区间
+                // 如果在[mid, high]递增区间
                 if (nums[mid] < target && nums[high] >= target) {
                     low = mid + 1;
                 } else {

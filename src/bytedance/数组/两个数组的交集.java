@@ -1,7 +1,6 @@
 package bytedance.数组;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class 两个数组的交集 {
